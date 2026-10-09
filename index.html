@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e1115">
+<link rel="icon" href="img/logo.jpg">
+<title>Eetcafé 't Haventje</title>
+<meta name="description" content="Eetcafé 't Haventje aan de Sluiskade in Almere-Haven. Lunch, diner, borrel en feestjes aan het water. Reserveer online of bel 036-808 0752.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one dark evening-café page; the menukaart is a sand "paper" card set into it. Brass accent from the logo, bottle-green from the velvet chairs. */
+:root {
+  --ink: #0e1115;
+  --ink-2: #161a20;
+  --ink-3: #1f242c;
+  --line: rgba(236, 228, 214, 0.14);
+  --fg: #ece4d6;
+  --fg-2: #b8b0a2;
+  --fg-3: #8a8378;
+  --brass: #cfae6c;
+  --brass-2: #e3c88f;
+  --green: #2f5d4e;
+  --green-2: #5fae92;
+  --cognac: #a3714a;
+  --paper: #f1ebdf;
+  --paper-2: #e6ddcc;
+  --paper-fg: #14171b;
+  --paper-fg-2: #4f5460;
+  --paper-line: rgba(20, 23, 27, 0.16);
+  --paper-brass: #8d6a2b;
+  --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --radius: 14px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --max: 1180px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4 { font-family: var(--display); line-height: 1.02; letter-spacing: -0.025em; margin: 0; text-wrap: balance; font-weight: 800; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.eyebrow { font-family: var(--body); font-weight: 600; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brass); display: inline-flex; align-items: center; gap: 10px; }
+.eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--brass); }
+.lead { font-size: clamp(17px, 1.3vw, 19px); color: var(--fg-2); max-width: 60ch; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border-radius: 999px; font-family: var(--body); font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease; white-space: nowrap; }
+.btn:hover { transform: translateY(-1px); }
+.btn-brass { background: var(--brass); color: #16120a; }
+.btn-brass:hover { background: var(--brass-2); }
+.btn-ghost { background: transparent; color: var(--fg); border-color: rgba(236,228,214,.35); }
+.btn-ghost:hover { border-color: var(--fg); }
+.btn-dark { background: var(--paper-fg); color: var(--paper); }
+.btn-dark:hover { background: #2a2f37; }
+.btn svg { width: 18px; height: 18px; }
+
+/* ---------- Nav ---------- */
+.nav { position: fixed; inset: 0 0 auto 0; z-index: 50; padding-top: env(safe-area-inset-top, 0px); transition: background .25s ease, box-shadow .25s ease; }
+.nav.is-scrolled { background: rgba(14,17,21,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
+.nav-in { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand-mark { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 1px solid rgba(207,174,108,.5); flex: none; }
+.brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+.brand-name { font-family: var(--display); font-weight: 800; font-size: 20px; letter-spacing: -0.02em; line-height: 1; }
+.brand-sub { display: block; font-family: var(--body); font-weight: 600; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--brass); margin-top: 4px; }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--fg-2); transition: color .15s; }
+.nav-links a:hover { color: var(--fg); }
+.nav-cta { display: flex; align-items: center; gap: 12px; }
+.nav .btn { padding: 11px 18px; font-size: 14px; }
+.burger { display: none; width: 44px; height: 44px; border-radius: 10px; background: transparent; border: 1px solid var(--line); color: var(--fg); cursor: pointer; align-items: center; justify-content: center; }
+.burger svg { width: 22px; height: 22px; }
+.mobile-menu { display: none; position: fixed; inset: 0; z-index: 49; background: rgba(14,17,21,.96); backdrop-filter: blur(10px); padding: calc(90px + env(safe-area-inset-top, 0px)) var(--gutter) 40px; }
+.mobile-menu[data-open="true"] { display: block; }
+.mobile-menu ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.mobile-menu ul a { display: block; padding: 14px 0; font-family: var(--display); font-weight: 700; font-size: 30px; letter-spacing: -0.02em; text-decoration: none; border-bottom: 1px solid var(--line); }
+.mobile-menu .btn { margin-top: 24px; width: 100%; }
+@media (max-width: 900px) {
+  .nav-links, .nav-cta .btn-ghost { display: none; }
+  .burger { display: inline-flex; }
+}
+@media (max-width: 520px) { .nav-cta .btn-brass { display: none; } }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; min-height: min(86vh, 820px); display: grid; align-items: end; overflow: hidden; isolation: isolate; }
+.hero-bg { position: absolute; inset: 0; z-index: -2; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 45%; transform: scale(1.04); animation: heroZoom 14s ease-out forwards; }
+.hero-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(14,17,21,.55) 0%, rgba(14,17,21,.25) 35%, rgba(14,17,21,.78) 72%, var(--ink) 100%); }
+.hero-in { padding-top: 140px; padding-bottom: 40px; display: grid; gap: 28px; }
+.hero h1 { font-size: clamp(44px, 8.4vw, 112px); max-width: 11ch; }
+.hero h1 em { font-style: normal; color: var(--brass-2); }
+.hero-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.status { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px 10px 12px; border-radius: 999px; background: rgba(14,17,21,.55); border: 1px solid var(--line); backdrop-filter: blur(8px); font-size: 14px; font-weight: 500; color: var(--fg); }
+.status i { width: 9px; height: 9px; border-radius: 50%; background: var(--fg-3); flex: none; }
+.status[data-open="true"] i { background: var(--green-2); box-shadow: 0 0 0 0 rgba(95,174,146,.6); animation: pulse 2.2s infinite; }
+.status b { font-weight: 600; }
+.hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); margin-top: 24px; }
+.hero-facts div { padding: 20px 0; display: grid; gap: 4px; }
+.hero-facts div + div { padding-left: 24px; border-left: 1px solid var(--line); }
+.hero-facts small { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-3); font-weight: 600; }
+.hero-facts span { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+@keyframes heroZoom { to { transform: scale(1); } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(95,174,146,.55); } 70% { box-shadow: 0 0 0 9px rgba(95,174,146,0); } 100% { box-shadow: 0 0 0 0 rgba(95,174,146,0); } }
+@media (max-width: 700px) {
+  .hero-facts { grid-template-columns: 1fr; }
+  .hero-facts div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .hero-facts div { padding: 14px 0; }
+}
+
+/* ---------- Sections ---------- */
+.section { padding-block: clamp(72px, 9vw, 128px); }
+.section-head { display: grid; gap: 16px; max-width: 760px; margin-bottom: clamp(36px, 5vw, 64px); }
+.section-head h2 { font-size: clamp(34px, 5vw, 60px); }
+
+/* Welkom */
+.welcome { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+.welcome-text { display: grid; gap: 22px; }
+.welcome-text h2 { font-size: clamp(34px, 4.6vw, 56px); }
+.welcome-text p { color: var(--fg-2); max-width: 54ch; }
+.usps { display: grid; gap: 14px; margin-top: 8px; padding: 0; list-style: none; }
+.usps li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; }
+.usps .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--ink-3); border: 1px solid var(--line); display: grid; place-items: center; color: var(--brass); }
+.usps .ico svg { width: 20px; height: 20px; }
+.usps b { display: block; font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+.usps span { color: var(--fg-2); font-size: 15px; }
+.welcome-photo { position: relative; }
+.welcome-photo img { border-radius: var(--radius); aspect-ratio: 4 / 4.6; object-fit: cover; width: 100%; }
+.welcome-photo .tag { position: absolute; left: 20px; bottom: 20px; background: var(--paper); color: var(--paper-fg); padding: 14px 18px; border-radius: 12px; display: grid; gap: 2px; box-shadow: 0 20px 40px rgba(0,0,0,.35); }
+.welcome-photo .tag b { font-family: var(--display); font-size: 26px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+.welcome-photo .tag span { font-size: 12.5px; color: var(--paper-fg-2); font-weight: 500; }
+@media (max-width: 880px) { .welcome { grid-template-columns: 1fr; } .welcome-photo { order: -1; } .welcome-photo img { aspect-ratio: 4 / 3; } }
+
+/* Menu (paper) */
+.menu-section { background: var(--paper); color: var(--paper-fg); }
+.menu-section .eyebrow { color: var(--paper-brass); }
+.menu-section .eyebrow::before { background: var(--paper-brass); }
+.menu-section .lead { color: var(--paper-fg-2); }
+.menu-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: clamp(36px, 5vw, 64px); }
+.menu-top .section-head { margin: 0; }
+.menu-times { display: grid; gap: 10px; min-width: 260px; padding: 18px 20px; border-radius: 12px; background: var(--paper-2); font-size: 14.5px; }
+.menu-times div { display: flex; justify-content: space-between; gap: 16px; }
+.menu-times dt { color: var(--paper-fg-2); font-weight: 500; }
+.menu-times dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 72px) clamp(32px, 5vw, 80px); }
+.menu-group { display: grid; gap: 22px; align-content: start; }
+.menu-group header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 2px solid var(--paper-fg); padding-bottom: 10px; }
+.menu-group h3 { font-size: clamp(24px, 2.4vw, 30px); }
+.menu-group header span { font-size: 13px; color: var(--paper-fg-2); font-weight: 500; text-align: right; }
+.menu-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.dish { display: grid; gap: 3px; }
+.dish-row { display: flex; align-items: baseline; gap: 10px; }
+.dish-row b { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+.dish-row .dots { flex: 1; border-bottom: 1px dotted var(--paper-line); transform: translateY(-5px); min-width: 16px; }
+.dish-row .price { font-family: var(--display); font-weight: 700; font-size: 17px; font-variant-numeric: tabular-nums; color: var(--paper-brass); white-space: nowrap; }
+.dish p { font-size: 14.5px; color: var(--paper-fg-2); line-height: 1.5; max-width: 46ch; }
+.chip { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; background: var(--green); color: #e9f3ee; vertical-align: middle; margin-left: 6px; }
+.coffee { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; gap: 24px 48px; align-items: center; padding: 28px 32px; border-radius: var(--radius); background: var(--paper-fg); color: var(--paper); }
+.coffee h3 { font-size: 26px; }
+.coffee .price-big { font-family: var(--display); font-weight: 800; font-size: 34px; color: var(--brass-2); letter-spacing: -0.02em; line-height: 1; }
+.coffee small { display: block; color: var(--fg-2); font-size: 14px; margin-top: 6px; }
+.coffee ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.coffee li { padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(236,228,214,.25); font-size: 14.5px; font-weight: 500; }
+.menu-note { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; font-size: 14px; color: var(--paper-fg-2); border-top: 1px solid var(--paper-line); padding-top: 24px; }
+.menu-note .btn { font-size: 14px; padding: 12px 18px; }
+@media (max-width: 760px) { .menu-grid { grid-template-columns: 1fr; } .coffee { grid-template-columns: 1fr; padding: 24px; } }
+
+/* Feest */
+.party { position: relative; background: var(--ink-2); overflow: hidden; }
+.party-in { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.party-text { display: grid; gap: 22px; }
+.party-text h2 { font-size: clamp(36px, 5vw, 64px); }
+.party-text p { color: var(--fg-2); max-width: 54ch; }
+.occasions { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.occasions li { font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--fg-2); }
+.party-photos { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 12px; }
+.party-photos img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.party-photos .p1 { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.party-photos .p2, .party-photos .p3 { aspect-ratio: 1 / 1; }
+.pack { margin-top: clamp(40px, 6vw, 72px); display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; }
+.card { background: var(--ink-3); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 3vw, 36px); display: grid; gap: 18px; align-content: start; }
+.card-top { display: flex; justify-content: space-between; align-items: start; gap: 16px; flex-wrap: wrap; }
+.card h3 { font-size: clamp(22px, 2.4vw, 28px); max-width: 18ch; }
+.price-tag { text-align: right; }
+.price-tag b { display: block; font-family: var(--display); font-weight: 800; font-size: 40px; color: var(--brass-2); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.price-tag span { font-size: 13px; color: var(--fg-3); font-weight: 500; }
+.includes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.includes li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start; color: var(--fg-2); font-size: 15.5px; }
+.includes svg { width: 20px; height: 20px; color: var(--green-2); margin-top: 3px; }
+.extras { display: grid; gap: 12px; }
+.extras h4 { font-size: 16px; font-weight: 700; color: var(--fg); }
+.extra { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 15px; color: var(--fg-2); }
+.extra b { font-family: var(--display); color: var(--brass-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.extra small { display: block; font-size: 13px; color: var(--fg-3); }
+.card .btn { justify-self: start; margin-top: 6px; }
+@media (max-width: 880px) { .party-in, .pack { grid-template-columns: 1fr; } }
+
+/* Galerij */
+.gallery { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 180px; gap: 12px; }
+.gallery figure { margin: 0; overflow: hidden; border-radius: 12px; background: var(--ink-3); }
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.gallery figure:hover img { transform: scale(1.04); }
+.g1 { grid-column: span 4; grid-row: span 2; }
+.g2 { grid-column: span 2; grid-row: span 2; }
+.g3 { grid-column: span 2; }
+.g4 { grid-column: span 2; }
+.g5 { grid-column: span 2; }
+@media (max-width: 760px) {
+  .gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+  .g1 { grid-column: span 2; grid-row: span 2; }
+  .g2 { grid-column: span 1; grid-row: span 1; }
+  .g3, .g4, .g5 { grid-column: span 1; }
+}
+
+/* Openingstijden */
+.hours { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+.hours-text { display: grid; gap: 20px; }
+.hours-text h2 { font-size: clamp(34px, 4.6vw, 56px); }
+.hours-text p { color: var(--fg-2); max-width: 50ch; }
+.hours-table { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.hours-table .row { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 12px; padding: 14px 22px; border-top: 1px solid var(--line); font-size: 15.5px; align-items: center; }
+.hours-table .row.head { border-top: 0; background: var(--ink-3); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-3); font-weight: 600; padding-block: 12px; }
+.hours-table .row.today { background: rgba(207,174,108,.08); }
+.hours-table .row.today .day::after { content: "vandaag"; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--brass); margin-left: 10px; font-weight: 700; }
+.hours-table .day { font-weight: 600; }
+.hours-table .t { font-variant-numeric: tabular-nums; color: var(--fg-2); }
+.hours-table .closed { color: var(--fg-3); font-style: italic; }
+@media (max-width: 880px) { .hours { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .hours-table .row { padding-inline: 16px; font-size: 14px; gap: 8px; } }
+
+/* Contact / reserveren */
+.contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+.contact-text { display: grid; gap: 24px; }
+.contact-text h2 { font-size: clamp(34px, 4.6vw, 56px); }
+.contact-text p { color: var(--fg-2); max-width: 50ch; }
+.contact-list { display: grid; gap: 14px; list-style: none; margin: 0; padding: 0; }
+.contact-list li { display: grid; grid-template-columns: 40px 1fr auto; gap: 14px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+.contact-list .ico { width: 40px; height: 40px; border-radius: 10px; background: var(--ink-3); border: 1px solid var(--line); display: grid; place-items: center; color: var(--brass); }
+.contact-list .ico svg { width: 18px; height: 18px; }
+.contact-list small { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-3); font-weight: 600; }
+.contact-list span { font-weight: 600; user-select: all; }
+.contact-list a { text-decoration: none; }
+.copy { font: inherit; font-size: 13px; font-weight: 600; background: transparent; color: var(--fg-2); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; cursor: pointer; }
+.copy:hover { color: var(--fg); border-color: var(--fg-2); }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.form { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(22px, 3vw, 36px); display: grid; gap: 18px; }
+.form h3 { font-size: 24px; }
+.form .hint { font-size: 14.5px; color: var(--fg-2); }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-size: 13px; font-weight: 600; color: var(--fg-2); }
+.field input, .field select, .field textarea { width: 100%; font: inherit; font-size: 15.5px; color: var(--fg); background: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; min-width: 0; }
+.field textarea { min-height: 110px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--brass); box-shadow: 0 0 0 3px rgba(207,174,108,.2); }
+.seg { display: flex; gap: 6px; padding: 4px; background: var(--ink); border: 1px solid var(--line); border-radius: 999px; width: fit-content; }
+.seg label { position: relative; cursor: pointer; }
+.seg input { position: absolute; opacity: 0; inset: 0; }
+.seg span { display: block; padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--fg-2); }
+.seg input:checked + span { background: var(--brass); color: #16120a; }
+.seg input:focus-visible + span { outline: 2px solid var(--brass); outline-offset: 2px; }
+.form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; justify-content: space-between; }
+.form-foot small { color: var(--fg-3); font-size: 13px; max-width: 34ch; }
+.notice { display: grid; gap: 8px; padding: 16px 18px; border-radius: 12px; background: rgba(95,174,146,.1); border: 1px solid rgba(95,174,146,.35); font-size: 15px; }
+.notice b { color: var(--green-2); }
+.notice.err { background: rgba(207,120,90,.1); border-color: rgba(207,120,90,.4); }
+.notice.err b { color: #e4a08a; }
+@media (max-width: 880px) { .contact { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .grid2 { grid-template-columns: 1fr; } .contact-list li { grid-template-columns: 40px 1fr; } .contact-list .copy { grid-column: 2; justify-self: start; } }
+
+/* Footer */
+.footer { border-top: 1px solid var(--line); padding-block: 48px 36px; }
+.footer-in { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+.footer .brand-name { font-size: 24px; }
+.footer p { color: var(--fg-2); font-size: 14.5px; max-width: 36ch; margin-top: 14px; }
+.footer h4 { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-3); font-weight: 600; margin-bottom: 14px; }
+.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.footer li a { text-decoration: none; color: var(--fg-2); font-size: 15px; }
+.footer li a:hover { color: var(--fg); }
+.socials { display: flex; gap: 10px; margin-top: 18px; }
+.socials a { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; color: var(--fg-2); }
+.socials a:hover { color: var(--brass); border-color: var(--brass); }
+.socials svg { width: 18px; height: 18px; }
+.footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px; color: var(--fg-3); }
+@media (max-width: 760px) { .footer-in { grid-template-columns: 1fr; } }
+
+/* Motion */
+.reveal { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { transition: opacity .7s ease, transform .7s ease; }
+  .reveal.pending { opacity: .001; transform: translateY(18px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-bg img { animation: none; transform: none; }
+  .status[data-open="true"] i { animation: none; }
+  .btn, .gallery img { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Eetcafé 't Haventje, naar boven">
+      <span class="brand-mark"><img src="img/logo.jpg" alt="" width="40" height="40"></span>
+      <span><span class="brand-name">'t Haventje</span><span class="brand-sub">Eetcafé · Almere-Haven</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#menu">Menukaart</a></li>
+      <li><a href="#feestje">Feestjes</a></li>
+      <li><a href="#galerij">Galerij</a></li>
+      <li><a href="#openingstijden">Openingstijden</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="tel:0368080752">036-808 0752</a>
+      <a class="btn btn-brass" href="https://reservation.dish.co/landingPage/hydra-48e26040-bbc9-11ee-b6ea-afbe0a1f8d19" target="_blank" rel="noopener">Reserveer een tafel</a>
+      <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu" data-open="false" aria-label="Mobiel menu">
+  <ul>
+    <li><a href="#menu">Menukaart</a></li>
+    <li><a href="#feestje">Feestjes</a></li>
+    <li><a href="#galerij">Galerij</a></li>
+    <li><a href="#openingstijden">Openingstijden</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="btn btn-brass" href="https://reservation.dish.co/landingPage/hydra-48e26040-bbc9-11ee-b6ea-afbe0a1f8d19" target="_blank" rel="noopener">Reserveer een tafel</a>
+  <a class="btn btn-ghost" style="width:100%;margin-top:10px" href="tel:0368080752">Bel 036-808 0752</a>
+</nav>
+
+<main id="top">
+  <!-- ---------- Hero ---------- -->
+  <section class="hero">
+    <div class="hero-bg"><img src="img/interieur-raam.jpg" alt="Het interieur van 't Haventje met houten tafels, velours stoelen en uitzicht op de haven" fetchpriority="high"></div>
+    <div class="hero-shade"></div>
+    <div class="wrap hero-in">
+      <span class="eyebrow">Eetcafé aan de Sluiskade · sinds 2024</span>
+      <h1>Gezellig eten <em>aan de haven.</em></h1>
+      <div class="hero-row">
+        <p class="lead">Lunch, diner of gewoon een goed glas aan het water in Almere-Haven. Eerlijke gerechten, een warm welkom en een terras waar je blijft zitten.</p>
+        <div class="hero-actions">
+          <a class="btn btn-brass" href="https://reservation.dish.co/landingPage/hydra-48e26040-bbc9-11ee-b6ea-afbe0a1f8d19" target="_blank" rel="noopener">Reserveer online</a>
+          <a class="btn btn-ghost" href="#menu">Bekijk de menukaart</a>
+        </div>
+      </div>
+      <div class="status" id="status" data-open="false"><i></i><span id="statusText">Openingstijden laden…</span></div>
+      <div class="hero-facts">
+        <div><small>Keuken</small><span>Di–vr 15:00–21:00 · za–zo 12:00–21:00</span></div>
+        <div><small>Adres</small><span>Sluiskade 11, Almere-Haven</span></div>
+        <div><small>Reserveren</small><span>036-808 0752 of online</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Welkom ---------- -->
+  <section class="section" id="welkom">
+    <div class="wrap welcome">
+      <div class="welcome-text reveal">
+        <span class="eyebrow">Welkom</span>
+        <h2>Kom eens gezellig langs.</h2>
+        <p>'t Haventje is een eetcafé zoals een eetcafé hoort te zijn: ongedwongen, gastvrij en zonder poespas. Je schuift aan voor een lunch in het weekend, een biefstuk van de haas op een doordeweekse avond of een borrel met uitzicht op de boten.</p>
+        <p>Grote houten tafels, zachte velours stoelen en een bar met een goed gevulde plank. Met de kinderen, met collega's of gewoon met z'n tweeën: iedereen is welkom.</p>
+        <ul class="usps">
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0"/><path d="M3 21c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0"/><path d="M12 3v10"/><path d="M7 8c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg></span><div><b>Aan het water</b><span>Binnen aan het raam of buiten op het terras, altijd zicht op de haven.</span></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18M5 3c3 0 4 2 4 5s-1 4-4 4"/><path d="M15 3v18"/><path d="M19 3c0 4-1 7-4 7"/></svg></span><div><b>Lunch, diner en borrel</b><span>Van een broodplankje tot sliptong, en kinderen krijgen hun eigen kaart.</span></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 15v6"/><path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/><path d="M6 6H4a2 2 0 0 0 0 4h2M18 6h2a2 2 0 0 1 0 4h-2"/></svg></span><div><b>Iets te vieren?</b><span>Verjaardag, jubileum of bedrijfsborrel: wij regelen het, op maat of met arrangement.</span></div></li>
+        </ul>
+      </div>
+      <div class="welcome-photo reveal">
+        <img src="img/interieur-tafel.jpg" alt="Ronde houten tafel met velours stoelen in cognac, zwart en groen" loading="lazy">
+        <div class="tag"><b>Sinds 2024</b><span>Sluiskade 11 · Almere-Haven</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Menukaart ---------- -->
+  <section class="section menu-section" id="menu">
+    <div class="wrap">
+      <div class="menu-top reveal">
+        <div class="section-head">
+          <span class="eyebrow">Menukaart</span>
+          <h2>Eerlijk eten, goed gedaan.</h2>
+          <p class="lead">Hoofdgerechten worden geserveerd met frites en salade. Onze dinerkaart loopt van 17:00 tot 21:00 uur; in het weekend is de keuken al vanaf 12:00 uur open voor lunch.</p>
+        </div>
+        <dl class="menu-times">
+          <div><dt>Keuken di–vr</dt><dd>15:00 – 21:00</dd></div>
+          <div><dt>Keuken za–zo</dt><dd>12:00 – 21:00</dd></div>
+          <div><dt>Dinerkaart</dt><dd>17:00 – 21:00</dd></div>
+        </dl>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-group reveal">
+          <header><h3>Voorgerechten</h3></header>
+          <ul>
+            <li class="dish"><div class="dish-row"><b>Broodplankje met kruidenboter</b><span class="dots"></span><span class="price">5,50</span></div><p>Heerlijk vers broodplankje met kruidenboter</p></li>
+            <li class="dish"><div class="dish-row"><b>Carpaccio</b><span class="dots"></span><span class="price">11,50</span></div><p>Dun gesneden carpaccio, geraspte Parmezaanse kaas, pijnboompitten en truffelmayonaise</p></li>
+            <li class="dish"><div class="dish-row"><b>Carpaccio salade</b><span class="dots"></span><span class="price">14,50</span></div><p>Gemengde sla, pijnboompitten, rucola, tomaat, Parmezaanse kaas, truffelmayonaise en rode uienringen</p></li>
+            <li class="dish"><div class="dish-row"><b>Tonijnsalade</b><span class="dots"></span><span class="price">12,50</span></div><p>Gemengde sla, tomaat, komkommer, ei, mayonaise en honing-mosterdsaus</p></li>
+            <li class="dish"><div class="dish-row"><b>Vissoep</b><span class="dots"></span><span class="price">6,00</span></div></li>
+            <li class="dish"><div class="dish-row"><b>Uiensoep</b><span class="dots"></span><span class="price">6,00</span></div></li>
+            <li class="dish"><div class="dish-row"><b>Soep van de dag</b><span class="dots"></span><span class="price">5,00</span></div><p>Vraag naar de soep van vandaag</p></li>
+          </ul>
+        </div>
+
+        <div class="menu-group reveal">
+          <header><h3>Hoofdgerechten</h3><span>Geserveerd met frites en salade</span></header>
+          <ul>
+            <li class="dish"><div class="dish-row"><b>Biefstuk van de haas</b><span class="dots"></span><span class="price">22,50</span></div><p>Malse biefstuk geserveerd met jus en brood</p></li>
+            <li class="dish"><div class="dish-row"><b>Sliptong</b><span class="dots"></span><span class="price">23,50</span></div><p>Gebakken malse sliptong</p></li>
+            <li class="dish"><div class="dish-row"><b>Schnitzel</b><span class="dots"></span><span class="price">17,50</span></div><p>Wienerschnitzel met saus naar keuze</p></li>
+            <li class="dish"><div class="dish-row"><b>Cordon bleu</b><span class="dots"></span><span class="price">16,00</span></div></li>
+            <li class="dish"><div class="dish-row"><b>Plate kipsaté</b><span class="dots"></span><span class="price">16,00</span></div><p>Atjar, satésaus en kroepoek</p></li>
+            <li class="dish"><div class="dish-row"><b>Shoarma plate</b><span class="dots"></span><span class="price">15,00</span></div><p>Kipshoarma met pitabrood en knoflooksaus</p></li>
+            <li class="dish"><div class="dish-row"><b>Hamburger speciaal</b><span class="dots"></span><span class="price">16,00</span></div><p>100% rundvleesburger met gebakken ei, bacon en kaas</p></li>
+            <li class="dish"><div class="dish-row"><b>Vegaburger <span class="chip">vega</span></b><span class="dots"></span><span class="price">16,00</span></div></li>
+            <li class="dish"><div class="dish-row"><b>Grootmoeders gehakt met satésaus</b><span class="dots"></span><span class="price">14,50</span></div><p>Huisgemaakte gehaktbal met satésaus</p></li>
+            <li class="dish"><div class="dish-row"><b>Gesmoorde kip uit het pannetje</b><span class="dots"></span><span class="price">16,00</span></div></li>
+          </ul>
+        </div>
+
+        <div class="menu-group reveal">
+          <header><h3>Kids menu</h3><span>Met frites en appelmoes</span></header>
+          <ul>
+            <li class="dish"><div class="dish-row"><b>Kipnuggets menu</b><span class="dots"></span><span class="price">8,50</span></div></li>
+            <li class="dish"><div class="dish-row"><b>Frikandel menu</b><span class="dots"></span><span class="price">8,50</span></div></li>
+            <li class="dish"><div class="dish-row"><b>Kroket menu</b><span class="dots"></span><span class="price">8,50</span></div></li>
+          </ul>
+        </div>
+
+        <div class="menu-group reveal">
+          <header><h3>Desserts</h3></header>
+          <ul>
+            <li class="dish"><div class="dish-row"><b>Dame blanche</b><span class="dots"></span><span class="price">7,00</span></div><p>Vanille-ijs, chocoladesaus en slagroom</p></li>
+            <li class="dish"><div class="dish-row"><b>Sorbet</b><span class="dots"></span><span class="price">7,00</span></div><p>Vanille-ijs, vruchten, siroop en slagroom</p></li>
+            <li class="dish"><div class="dish-row"><b>Vanille-ijs met advocaat en slagroom</b><span class="dots"></span><span class="price">7,00</span></div></li>
+            <li class="dish"><div class="dish-row"><b>Flensje met vanille-ijs en Grand Marnier</b><span class="dots"></span><span class="price">7,00</span></div></li>
+          </ul>
+        </div>
+
+        <div class="coffee reveal">
+          <div>
+            <h3>Special coffee's</h3>
+            <div class="price-big">€ 7,50</div>
+            <small>Koffie met een scheut en een toef slagroom</small>
+          </div>
+          <ul>
+            <li>Jameson whiskey</li><li>Grand Marnier</li><li>Amaretto</li><li>Tia Maria</li><li>Tia Maria &amp; Grand Marnier</li><li>Licor 43</li>
+          </ul>
+        </div>
+
+        <div class="menu-note reveal">
+          <span>Heb je een voedselallergie? Vraag naar onze allergenenkaart, we helpen je graag. Alle prijzen in euro's, inclusief btw.</span>
+          <a class="btn btn-dark" href="https://reservation.dish.co/landingPage/hydra-48e26040-bbc9-11ee-b6ea-afbe0a1f8d19" target="_blank" rel="noopener">Tafel reserveren</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Feestje ---------- -->
+  <section class="section party" id="feestje">
+    <div class="wrap">
+      <div class="party-in">
+        <div class="party-text reveal">
+          <span class="eyebrow">Feestjes &amp; groepen</span>
+          <h2>Iets te vieren? Vier het bij ons.</h2>
+          <p>Van verjaardag tot jubileum, van klassenavond tot bedrijfsborrel: bij 't Haventje wordt elk feestje bijzonder. Alles op maat, of kies ons all-in drankarrangement en laat de rest aan ons over.</p>
+          <ul class="occasions">
+            <li>Verjaardag</li><li>Jubileum</li><li>Borrel</li><li>Familiediner</li><li>Klassenavond</li><li>Zakelijke bijeenkomst</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-brass" href="#contact" data-plan="feest">Vraag een feestje aan</a>
+            <a class="btn btn-ghost" href="tel:0614134940">Bel 06-14 13 49 40</a>
+          </div>
+        </div>
+        <div class="party-photos reveal">
+          <img class="p1" src="img/dansen.jpg" alt="Gasten dansen tijdens een feest in 't Haventje" loading="lazy">
+          <img class="p2" src="img/feest.jpg" alt="Ballonnen en een dj-booth bij een 70e verjaardag" loading="lazy">
+          <img class="p3" src="img/bar.jpg" alt="De bar met een volle plank sterke drank en een vol café" loading="lazy">
+        </div>
+      </div>
+
+      <div class="pack">
+        <div class="card reveal">
+          <div class="card-top">
+            <div>
+              <span class="eyebrow">Arrangement</span>
+              <h3 style="margin-top:10px">Hollands gedestilleerd drankarrangement</h3>
+            </div>
+            <div class="price-tag"><b>€ 32,50</b><span>per persoon · 4 uur</span></div>
+          </div>
+          <ul class="includes">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Vier uur lang onbeperkt bier, rode en witte wijn, jus d'orange en frisdrank aan de bar</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Alcoholvrij bier inbegrepen</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>2× bittergarnituur en 1× kaas of worst</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Bites en snacks zijn los bij te bestellen</span></li>
+          </ul>
+          <a class="btn btn-brass" href="#contact">Offerte aanvragen</a>
+        </div>
+        <div class="card reveal extras">
+          <h4>Maak het af</h4>
+          <div class="extra"><div>Champagnemoment<small>Proost met z'n allen op het moment zelf</small></div><b>+ € 2,75 p.p.</b></div>
+          <div class="extra"><div>Puntzakje patat<small>Aan het eind van de avond, voor iedereen</small></div><b>+ € 2,75 p.p.</b></div>
+          <div class="extra"><div>Bites &amp; snacks<small>Op maat, buiten het arrangement om</small></div><b>op aanvraag</b></div>
+          <p style="color:var(--fg-3);font-size:14px;margin-top:6px">Na je aanvraag nemen we telefonisch contact op om alles door te nemen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Galerij ---------- -->
+  <section class="section" id="galerij">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Galerij</span>
+        <h2>Een kijkje binnen.</h2>
+      </div>
+      <div class="gallery reveal">
+        <figure class="g1"><img src="img/interieur-raam.jpg" alt="Ovale houten tafel bij het raam met uitzicht op het terras en de haven" loading="lazy"></figure>
+        <figure class="g2"><img src="img/interieur-tafel.jpg" alt="Ronde tafel met velours stoelen" loading="lazy"></figure>
+        <figure class="g3"><img src="img/bar.jpg" alt="De bar van 't Haventje tijdens een drukke middag" loading="lazy"></figure>
+        <figure class="g4"><img src="img/feest.jpg" alt="Feestversiering met ballonnen en dj" loading="lazy"></figure>
+        <figure class="g5"><img src="img/dansen.jpg" alt="Dansende gasten in paars feestlicht" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Openingstijden ---------- -->
+  <section class="section" id="openingstijden" style="padding-top:0">
+    <div class="wrap hours">
+      <div class="hours-text reveal">
+        <span class="eyebrow">Openingstijden</span>
+        <h2>Wanneer we open zijn.</h2>
+        <p>Op maandag zijn we gesloten. De keuken sluit elke dag om 21:00 uur; de bar blijft daarna gewoon open.</p>
+        <div class="status" id="status2" data-open="false"><i></i><span id="statusText2">Openingstijden laden…</span></div>
+      </div>
+      <div class="hours-table reveal" id="hoursTable">
+        <div class="row head"><span>Dag</span><span>Café</span><span>Keuken</span></div>
+        <div class="row" data-day="1"><span class="day">Maandag</span><span class="closed">Gesloten</span><span class="closed">Gesloten</span></div>
+        <div class="row" data-day="2"><span class="day">Dinsdag</span><span class="t">15:00 – 22:00</span><span class="t">15:00 – 21:00</span></div>
+        <div class="row" data-day="3"><span class="day">Woensdag</span><span class="t">15:00 – 22:00</span><span class="t">15:00 – 21:00</span></div>
+        <div class="row" data-day="4"><span class="day">Donderdag</span><span class="t">15:00 – 22:00</span><span class="t">15:00 – 21:00</span></div>
+        <div class="row" data-day="5"><span class="day">Vrijdag</span><span class="t">15:00 – 23:00</span><span class="t">15:00 – 21:00</span></div>
+        <div class="row" data-day="6"><span class="day">Zaterdag</span><span class="t">15:00 – 23:00</span><span class="t">12:00 – 21:00</span></div>
+        <div class="row" data-day="0"><span class="day">Zondag</span><span class="t">15:00 – 22:00</span><span class="t">12:00 – 21:00</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Reserveren & contact ---------- -->
+  <section class="section" id="contact" style="padding-top:0">
+    <div class="wrap contact">
+      <div class="contact-text reveal">
+        <span class="eyebrow">Reserveren &amp; contact</span>
+        <h2>Tot snel aan de Sluiskade.</h2>
+        <p>Een tafel voor lunch of diner reserveer je het snelst online. Voor groepen, feestjes en zakelijke bijeenkomsten bellen we je graag even, zodat we alles persoonlijk kunnen afstemmen.</p>
+        <div class="contact-actions">
+          <a class="btn btn-brass" href="https://reservation.dish.co/landingPage/hydra-48e26040-bbc9-11ee-b6ea-afbe0a1f8d19" target="_blank" rel="noopener">Reserveer online</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Sluiskade+11%2C+1353+BT+Almere-Haven" target="_blank" rel="noopener">Route plannen</a>
+        </div>
+        <ul class="contact-list">
+          <li>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <div><small>Adres</small><span id="addr">Sluiskade 11, 1353 BT Almere-Haven</span></div>
+            <button class="copy" type="button" data-copy="Sluiskade 11, 1353 BT Almere-Haven">Kopieer</button>
+          </li>
+          <li>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+            <div><small>Telefoon</small><a href="tel:0368080752"><span>036-808 0752</span></a></div>
+            <button class="copy" type="button" data-copy="036-8080752">Kopieer</button>
+          </li>
+          <li>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <div><small>E-mail</small><a href="mailto:info@eetcafehaventje.nl"><span>info@eetcafehaventje.nl</span></a></div>
+            <button class="copy" type="button" data-copy="info@eetcafehaventje.nl">Kopieer</button>
+          </li>
+          <li>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 15v6"/><path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3z"/></svg></span>
+            <div><small>Feestjes &amp; groepen</small><a href="tel:0614134940"><span>06-14 13 49 40</span></a></div>
+            <button class="copy" type="button" data-copy="06-14134940">Kopieer</button>
+          </li>
+        </ul>
+      </div>
+
+      <form class="form reveal" id="requestForm" novalidate>
+        <div>
+          <h3>Stuur een aanvraag</h3>
+          <p class="hint">Voor een tafel, een groep of een feestje. We reageren zo snel mogelijk, meestal dezelfde dag.</p>
+        </div>
+        <div class="seg" role="radiogroup" aria-label="Soort aanvraag">
+          <label><input type="radio" name="type" value="Tafel reserveren" id="typeTafel" checked><span>Tafel</span></label>
+          <label><input type="radio" name="type" value="Groep" id="typeGroep"><span>Groep</span></label>
+          <label><input type="radio" name="type" value="Feestje" id="typeFeest"><span>Feestje</span></label>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="fName">Naam</label><input id="fName" name="naam" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="fPhone">Telefoon</label><input id="fPhone" name="telefoon" type="tel" autocomplete="tel" required></div>
+        </div>
+        <div class="field"><label for="fEmail">E-mail</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
+        <div class="grid2">
+          <div class="field"><label for="fDate">Datum</label><input id="fDate" name="datum" type="date" required></div>
+          <div class="field"><label for="fTime">Tijd</label><input id="fTime" name="tijd" type="time" step="900" value="18:00" required></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="fGuests">Aantal personen</label><input id="fGuests" name="personen" type="number" min="1" max="150" value="2" required></div>
+          <div class="field"><label for="fEnd">Eindtijd (bij feestje)</label><input id="fEnd" name="eindtijd" type="time" step="900"></div>
+        </div>
+        <div class="field"><label for="fMsg">Omschrijving of wensen</label><textarea id="fMsg" name="bericht" placeholder="Bijvoorbeeld: verjaardag van 50, met drankarrangement en puntzak patat."></textarea></div>
+        <div class="form-foot">
+          <button class="btn btn-brass" type="submit">Verstuur aanvraag</button>
+          <small>Je e-mailprogramma opent met de aanvraag ingevuld. Liever bellen? 036-808 0752.</small>
+        </div>
+        <div class="notice" id="formNotice" hidden></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div>
+      <a class="brand" href="#top">
+        <span class="brand-mark" style="width:48px;height:48px"><img src="img/logo.jpg" alt="Logo van eetcafé 't Haventje"></span>
+        <span><span class="brand-name">'t Haventje</span><span class="brand-sub">Eetcafé · sinds 2024</span></span>
+      </a>
+      <p>Eetcafé aan de haven van Almere-Haven. Lunch, diner, borrel en feestjes aan de Sluiskade.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61556260251499" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Bezoek</h4>
+      <ul>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Sluiskade+11%2C+1353+BT+Almere-Haven" target="_blank" rel="noopener">Sluiskade 11, Almere-Haven</a></li>
+        <li><a href="tel:0368080752">036-808 0752</a></li>
+        <li><a href="mailto:info@eetcafehaventje.nl">info@eetcafehaventje.nl</a></li>
+        <li><a href="#openingstijden">Openingstijden</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Snel naar</h4>
+      <ul>
+        <li><a href="#menu">Menukaart</a></li>
+        <li><a href="#feestje">Feestjes &amp; arrangement</a></li>
+        <li><a href="#galerij">Galerij</a></li>
+        <li><a href="https://reservation.dish.co/landingPage/hydra-48e26040-bbc9-11ee-b6ea-afbe0a1f8d19" target="_blank" rel="noopener">Online reserveren</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© <span id="year">2026</span> Eetcafé 't Haventje · Almere-Haven</span>
+    <span>Maandag gesloten · keuken tot 21:00</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // ---- Openingstijden (Europe/Amsterdam) ----
+  // day: 0 = zondag ... 6 = zaterdag; [open, close] in uren, null = gesloten
+  var HOURS = { 0: [15, 22], 1: null, 2: [15, 22], 3: [15, 22], 4: [15, 22], 5: [15, 23], 6: [15, 23] };
+  var DAYS = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
+
+  function nowInAmsterdam() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Amsterdam', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
+      var map = {};
+      parts.forEach(function (p) { map[p.type] = p.value; });
+      var wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(map.weekday);
+      var h = parseInt(map.hour, 10) % 24, m = parseInt(map.minute, 10);
+      return { day: wd, minutes: h * 60 + m };
+    } catch (e) {
+      var d = new Date();
+      return { day: d.getDay(), minutes: d.getHours() * 60 + d.getMinutes() };
+    }
+  }
+  function fmt(h) { return (h < 10 ? '0' : '') + h + ':00'; }
+
+  function status() {
+    var t = nowInAmsterdam();
+    var today = HOURS[t.day];
+    if (today && t.minutes >= today[0] * 60 && t.minutes < today[1] * 60) {
+      var kitchenOpen = t.minutes < 21 * 60;
+      return { open: true, html: '<b>Nu open</b> · tot ' + fmt(today[1]) + (kitchenOpen ? ' · keuken tot 21:00' : ' · keuken gesloten') };
+    }
+    if (today && t.minutes < today[0] * 60) {
+      return { open: false, html: '<b>Nu gesloten</b> · opent vandaag om ' + fmt(today[0]) };
+    }
+    for (var i = 1; i <= 7; i++) {
+      var d = (t.day + i) % 7;
+      if (HOURS[d]) {
+        var when = i === 1 ? 'morgen' : DAYS[d];
+        return { open: false, html: '<b>Nu gesloten</b> · opent ' + when + ' om ' + fmt(HOURS[d][0]) };
+      }
+    }
+    return { open: false, html: '<b>Gesloten</b>' };
+  }
+
+  function paintStatus() {
+    var s = status();
+    [['status', 'statusText'], ['status2', 'statusText2']].forEach(function (ids) {
+      var box = document.getElementById(ids[0]), txt = document.getElementById(ids[1]);
+      if (!box || !txt) return;
+      box.setAttribute('data-open', s.open ? 'true' : 'false');
+      txt.innerHTML = s.html;
+    });
+    var day = nowInAmsterdam().day;
+    document.querySelectorAll('#hoursTable .row[data-day]').forEach(function (r) {
+      r.classList.toggle('today', parseInt(r.getAttribute('data-day'), 10) === day);
+    });
+  }
+  paintStatus();
+  setInterval(paintStatus, 60000);
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- Nav ----
+  var nav = document.getElementById('nav');
+  function onScroll() { nav.classList.toggle('is-scrolled', window.scrollY > 24); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  var burger = document.getElementById('burger'), mobile = document.getElementById('mobileMenu');
+  function setMenu(open) {
+    mobile.setAttribute('data-open', open ? 'true' : 'false');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function () { setMenu(mobile.getAttribute('data-open') !== 'true'); });
+  mobile.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // ---- Feestje-knop zet het formulier alvast op "Feestje" ----
+  document.querySelectorAll('[data-plan="feest"]').forEach(function (a) {
+    a.addEventListener('click', function () { var r = document.getElementById('typeFeest'); if (r) r.checked = true; });
+  });
+
+  // ---- Kopieerknoppen ----
+  document.querySelectorAll('.copy[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var val = btn.getAttribute('data-copy'), label = btn.textContent;
+      function done(ok) { btn.textContent = ok ? 'Gekopieerd' : 'Selecteer'; setTimeout(function () { btn.textContent = label; }, 1600); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(val).then(function () { done(true); }, function () { fallback(); });
+      } else { fallback(); }
+      function fallback() {
+        var span = btn.parentElement.querySelector('span');
+        if (span && window.getSelection) { var r = document.createRange(); r.selectNodeContents(span); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); }
+        done(false);
+      }
+    });
+  });
+
+  // ---- Aanvraagformulier -> e-mail ----
+  var form = document.getElementById('requestForm'), notice = document.getElementById('formNotice');
+  var dateInput = document.getElementById('fDate');
+  if (dateInput) { var tm = new Date(); tm.setDate(tm.getDate() + 1); dateInput.value = tm.toISOString().slice(0, 10); dateInput.min = new Date().toISOString().slice(0, 10); }
+
+  function showNotice(html, isErr) { notice.className = 'notice' + (isErr ? ' err' : ''); notice.innerHTML = html; notice.hidden = false; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var missing = [];
+    form.querySelectorAll('[required]').forEach(function (el) { if (!el.value.trim()) missing.push(el.previousElementSibling.textContent); });
+    var email = document.getElementById('fEmail').value.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) missing.push('een geldig e-mailadres');
+    if (missing.length) { showNotice('<b>Nog niet compleet.</b> Vul in: ' + missing.join(', ') + '.', true); return; }
+
+    var type = form.querySelector('input[name="type"]:checked').value;
+    var d = document.getElementById('fDate').value.split('-');
+    var dateNl = d.length === 3 ? d[2] + '-' + d[1] + '-' + d[0] : document.getElementById('fDate').value;
+    var lines = [
+      'Soort aanvraag: ' + type,
+      'Naam: ' + document.getElementById('fName').value.trim(),
+      'Telefoon: ' + document.getElementById('fPhone').value.trim(),
+      'E-mail: ' + email,
+      'Datum: ' + dateNl,
+      'Tijd: ' + document.getElementById('fTime').value + (document.getElementById('fEnd').value ? ' tot ' + document.getElementById('fEnd').value : ''),
+      'Aantal personen: ' + document.getElementById('fGuests').value,
+      '',
+      document.getElementById('fMsg').value.trim() || '(geen opmerkingen)'
+    ];
+    var subject = type + ' – ' + dateNl + ' – ' + document.getElementById('fGuests').value + ' pers. – ' + document.getElementById('fName').value.trim();
+    var href = 'mailto:info@eetcafehaventje.nl?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+    showNotice('<b>Aanvraag klaargezet.</b> Je e-mailprogramma opent nu met je aanvraag voor ' + dateNl + ' (' + document.getElementById('fGuests').value + ' pers.). Gebeurt er niets? Mail dan naar info@eetcafehaventje.nl of bel 036-808 0752.');
+    try { window.location.href = href; } catch (err) {}
+  });
+
+  // ---- Zachte reveal bij scrollen (startstaat is zichtbaar) ----
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    var els = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.remove('pending'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top > window.innerHeight) { el.classList.add('pending'); io.observe(el); }
+    });
+  }
+})();
+</script>
+</body>
+</html>
