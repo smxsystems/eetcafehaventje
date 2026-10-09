@@ -1,0 +1,64 @@
+name: Docker eetcafehaventje (release)
+
+on:
+  push:
+    tags: [ 'v*.*.*' ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: smxsystems/eetcafehaventje
+  DOCKERFILE: Dockerfile
+  SERVICE: eetcafehaventje
+  K8S_REPO: smxsystems/k8s-deployment
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log into registry ${{ env.REGISTRY }}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=tag
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ${{ env.DOCKERFILE }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Trigger production deployment
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GHCR_TOKEN }}
+          repository: ${{ env.K8S_REPO }}
+          event-type: bump-production
+          client-payload: |
+            {
+              "service": "${{ env.SERVICE }}",
+              "tag": "${{ github.ref_name }}",
+              "commit": "${{ github.sha }}",
+              "actor": "${{ github.actor }}"
+            }
