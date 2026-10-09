@@ -245,7 +245,7 @@ p { margin: 0; }
 @media (max-width: 420px) { .hours-table .row { padding-inline: 16px; font-size: 14px; gap: 8px; } }
 
 /* Contact / reserveren */
-.contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
 .contact-text { display: grid; gap: 24px; }
 .contact-text h2 { font-size: clamp(34px, 4.6vw, 56px); }
 .contact-text p { color: var(--fg-2); max-width: 50ch; }
@@ -259,29 +259,8 @@ p { margin: 0; }
 .copy { font: inherit; font-size: 13px; font-weight: 600; background: transparent; color: var(--fg-2); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; cursor: pointer; }
 .copy:hover { color: var(--fg); border-color: var(--fg-2); }
 .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.form { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(22px, 3vw, 36px); display: grid; gap: 18px; }
-.form h3 { font-size: 24px; }
-.form .hint { font-size: 14.5px; color: var(--fg-2); }
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.field { display: grid; gap: 6px; min-width: 0; }
-.field label { font-size: 13px; font-weight: 600; color: var(--fg-2); }
-.field input, .field select, .field textarea { width: 100%; font: inherit; font-size: 15.5px; color: var(--fg); background: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; min-width: 0; }
-.field textarea { min-height: 110px; resize: vertical; }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--brass); box-shadow: 0 0 0 3px rgba(207,174,108,.2); }
-.seg { display: flex; gap: 6px; padding: 4px; background: var(--ink); border: 1px solid var(--line); border-radius: 999px; width: fit-content; }
-.seg label { position: relative; cursor: pointer; }
-.seg input { position: absolute; opacity: 0; inset: 0; }
-.seg span { display: block; padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--fg-2); }
-.seg input:checked + span { background: var(--brass); color: #16120a; }
-.seg input:focus-visible + span { outline: 2px solid var(--brass); outline-offset: 2px; }
-.form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; justify-content: space-between; }
-.form-foot small { color: var(--fg-3); font-size: 13px; max-width: 34ch; }
-.notice { display: grid; gap: 8px; padding: 16px 18px; border-radius: 12px; background: rgba(95,174,146,.1); border: 1px solid rgba(95,174,146,.35); font-size: 15px; }
-.notice b { color: var(--green-2); }
-.notice.err { background: rgba(207,120,90,.1); border-color: rgba(207,120,90,.4); }
-.notice.err b { color: #e4a08a; }
 @media (max-width: 880px) { .contact { grid-template-columns: 1fr; } }
-@media (max-width: 520px) { .grid2 { grid-template-columns: 1fr; } .contact-list li { grid-template-columns: 40px 1fr; } .contact-list .copy { grid-column: 2; justify-self: start; } }
+@media (max-width: 520px) { .contact-list li { grid-template-columns: 40px 1fr; } .contact-list .copy { grid-column: 2; justify-self: start; } }
 
 /* Footer */
 .footer { border-top: 1px solid var(--line); padding-block: 48px 36px; }
@@ -490,8 +469,8 @@ p { margin: 0; }
             <li>Verjaardag</li><li>Jubileum</li><li>Borrel</li><li>Familiediner</li><li>Klassenavond</li><li>Zakelijke bijeenkomst</li>
           </ul>
           <div class="hero-actions">
-            <a class="btn btn-brass" href="#contact" data-plan="feest">Vraag een feestje aan</a>
-            <a class="btn btn-ghost" href="tel:0614134940">Bel 06-14 13 49 40</a>
+            <a class="btn btn-brass" href="tel:0614134940">Bel 06-14 13 49 40</a>
+            <a class="btn btn-ghost" href="mailto:info@eetcafehaventje.nl?subject=Feestje%20bij%20%27t%20Haventje">Mail je wensen</a>
           </div>
         </div>
         <div class="party-photos reveal">
@@ -516,14 +495,14 @@ p { margin: 0; }
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>2× bittergarnituur en 1× kaas of worst</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Bites en snacks zijn los bij te bestellen</span></li>
           </ul>
-          <a class="btn btn-brass" href="#contact">Offerte aanvragen</a>
+          <a class="btn btn-brass" href="tel:0614134940">Bel voor een offerte</a>
         </div>
         <div class="card reveal extras">
           <h4>Maak het af</h4>
           <div class="extra"><div>Champagnemoment<small>Proost met z'n allen op het moment zelf</small></div><b>+ € 2,75 p.p.</b></div>
           <div class="extra"><div>Puntzakje patat<small>Aan het eind van de avond, voor iedereen</small></div><b>+ € 2,75 p.p.</b></div>
           <div class="extra"><div>Bites &amp; snacks<small>Op maat, buiten het arrangement om</small></div><b>op aanvraag</b></div>
-          <p style="color:var(--fg-3);font-size:14px;margin-top:6px">Na je aanvraag nemen we telefonisch contact op om alles door te nemen.</p>
+          <p style="color:var(--fg-3);font-size:14px;margin-top:6px">Bel of mail ons met je wensen, dan nemen we alles samen door.</p>
         </div>
       </div>
     </div>
@@ -574,11 +553,14 @@ p { margin: 0; }
       <div class="contact-text reveal">
         <span class="eyebrow">Reserveren &amp; contact</span>
         <h2>Tot snel aan de Sluiskade.</h2>
-        <p>Een tafel voor lunch of diner reserveer je het snelst online. Voor groepen, feestjes en zakelijke bijeenkomsten bellen we je graag even, zodat we alles persoonlijk kunnen afstemmen.</p>
+        <p>Een tafel voor lunch of diner reserveer je online via ons reserveringssysteem, of je belt ons even. Voor groepen, feestjes en zakelijke bijeenkomsten bel je het beste direct, dan stemmen we alles persoonlijk af.</p>
         <div class="contact-actions">
           <a class="btn btn-brass" href="https://reservation.dish.co/landingPage/hydra-48e26040-bbc9-11ee-b6ea-afbe0a1f8d19" target="_blank" rel="noopener">Reserveer online</a>
+          <a class="btn btn-ghost" href="tel:0368080752">Bel 036-808 0752</a>
           <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Sluiskade+11%2C+1353+BT+Almere-Haven" target="_blank" rel="noopener">Route plannen</a>
         </div>
+      </div>
+      <div class="reveal">
         <ul class="contact-list">
           <li>
             <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
@@ -602,37 +584,6 @@ p { margin: 0; }
           </li>
         </ul>
       </div>
-
-      <form class="form reveal" id="requestForm" novalidate>
-        <div>
-          <h3>Stuur een aanvraag</h3>
-          <p class="hint">Voor een tafel, een groep of een feestje. We reageren zo snel mogelijk, meestal dezelfde dag.</p>
-        </div>
-        <div class="seg" role="radiogroup" aria-label="Soort aanvraag">
-          <label><input type="radio" name="type" value="Tafel reserveren" id="typeTafel" checked><span>Tafel</span></label>
-          <label><input type="radio" name="type" value="Groep" id="typeGroep"><span>Groep</span></label>
-          <label><input type="radio" name="type" value="Feestje" id="typeFeest"><span>Feestje</span></label>
-        </div>
-        <div class="grid2">
-          <div class="field"><label for="fName">Naam</label><input id="fName" name="naam" type="text" autocomplete="name" required></div>
-          <div class="field"><label for="fPhone">Telefoon</label><input id="fPhone" name="telefoon" type="tel" autocomplete="tel" required></div>
-        </div>
-        <div class="field"><label for="fEmail">E-mail</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
-        <div class="grid2">
-          <div class="field"><label for="fDate">Datum</label><input id="fDate" name="datum" type="date" required></div>
-          <div class="field"><label for="fTime">Tijd</label><input id="fTime" name="tijd" type="time" step="900" value="18:00" required></div>
-        </div>
-        <div class="grid2">
-          <div class="field"><label for="fGuests">Aantal personen</label><input id="fGuests" name="personen" type="number" min="1" max="150" value="2" required></div>
-          <div class="field"><label for="fEnd">Eindtijd (bij feestje)</label><input id="fEnd" name="eindtijd" type="time" step="900"></div>
-        </div>
-        <div class="field"><label for="fMsg">Omschrijving of wensen</label><textarea id="fMsg" name="bericht" placeholder="Bijvoorbeeld: verjaardag van 50, met drankarrangement en puntzak patat."></textarea></div>
-        <div class="form-foot">
-          <button class="btn btn-brass" type="submit">Verstuur aanvraag</button>
-          <small>Je e-mailprogramma opent met de aanvraag ingevuld. Liever bellen? 036-808 0752.</small>
-        </div>
-        <div class="notice" id="formNotice" hidden></div>
-      </form>
     </div>
   </section>
 </main>
@@ -751,11 +702,6 @@ p { margin: 0; }
   mobile.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
 
-  // ---- Feestje-knop zet het formulier alvast op "Feestje" ----
-  document.querySelectorAll('[data-plan="feest"]').forEach(function (a) {
-    a.addEventListener('click', function () { var r = document.getElementById('typeFeest'); if (r) r.checked = true; });
-  });
-
   // ---- Kopieerknoppen ----
   document.querySelectorAll('.copy[data-copy]').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -770,41 +716,6 @@ p { margin: 0; }
         done(false);
       }
     });
-  });
-
-  // ---- Aanvraagformulier -> e-mail ----
-  var form = document.getElementById('requestForm'), notice = document.getElementById('formNotice');
-  var dateInput = document.getElementById('fDate');
-  if (dateInput) { var tm = new Date(); tm.setDate(tm.getDate() + 1); dateInput.value = tm.toISOString().slice(0, 10); dateInput.min = new Date().toISOString().slice(0, 10); }
-
-  function showNotice(html, isErr) { notice.className = 'notice' + (isErr ? ' err' : ''); notice.innerHTML = html; notice.hidden = false; }
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var missing = [];
-    form.querySelectorAll('[required]').forEach(function (el) { if (!el.value.trim()) missing.push(el.previousElementSibling.textContent); });
-    var email = document.getElementById('fEmail').value.trim();
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) missing.push('een geldig e-mailadres');
-    if (missing.length) { showNotice('<b>Nog niet compleet.</b> Vul in: ' + missing.join(', ') + '.', true); return; }
-
-    var type = form.querySelector('input[name="type"]:checked').value;
-    var d = document.getElementById('fDate').value.split('-');
-    var dateNl = d.length === 3 ? d[2] + '-' + d[1] + '-' + d[0] : document.getElementById('fDate').value;
-    var lines = [
-      'Soort aanvraag: ' + type,
-      'Naam: ' + document.getElementById('fName').value.trim(),
-      'Telefoon: ' + document.getElementById('fPhone').value.trim(),
-      'E-mail: ' + email,
-      'Datum: ' + dateNl,
-      'Tijd: ' + document.getElementById('fTime').value + (document.getElementById('fEnd').value ? ' tot ' + document.getElementById('fEnd').value : ''),
-      'Aantal personen: ' + document.getElementById('fGuests').value,
-      '',
-      document.getElementById('fMsg').value.trim() || '(geen opmerkingen)'
-    ];
-    var subject = type + ' – ' + dateNl + ' – ' + document.getElementById('fGuests').value + ' pers. – ' + document.getElementById('fName').value.trim();
-    var href = 'mailto:info@eetcafehaventje.nl?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
-    showNotice('<b>Aanvraag klaargezet.</b> Je e-mailprogramma opent nu met je aanvraag voor ' + dateNl + ' (' + document.getElementById('fGuests').value + ' pers.). Gebeurt er niets? Mail dan naar info@eetcafehaventje.nl of bel 036-808 0752.');
-    try { window.location.href = href; } catch (err) {}
   });
 
   // ---- Zachte reveal bij scrollen (startstaat is zichtbaar) ----
